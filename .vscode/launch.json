@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "Launch TypeScript Using ts-node",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**","node_modules/**"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "program": "${file}"
+    }
+  ]
+}
