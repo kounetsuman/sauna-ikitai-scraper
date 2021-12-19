@@ -14,6 +14,7 @@
 
 - サウナイキタイに登録した、自分のサ活データを json 形式で取得します。
 - 取得した json データを分析・集計します。
+  - 結果形式は: https://github.com/kounetsuman/sauna-ikitai-scraper/blob/main/src/%EF%BC%A0types/index.d.ts
 
 > 既存仕様だと、直近 2 ヶ月の集計データ 且つ 集計対象のデータもごく少ないので  
 > 要望も多数あったため、作りました。  
