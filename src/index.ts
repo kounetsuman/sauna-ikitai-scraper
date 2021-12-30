@@ -3,6 +3,12 @@ import { DEBUG } from "./lib/const";
 import { scrape } from "./lib/scraper";
 import { SaunaIkitaiSummary } from "./＠types";
 
+export default async function sauna() {
+    const postList = await scrape();
+    const summary = await analize(postList);
+    return summary;
+}
+
 (async function () {
     const postList = await scrape();
     const summary = await analize(postList);

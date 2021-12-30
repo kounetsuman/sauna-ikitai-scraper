@@ -3,14 +3,7 @@ export as namespace SaunaIkitaiScraper;
 export = SaunaIkitaiScraper;
 
 declare namespace SaunaIkitaiScraper {
-    /**
-     * スクレイピング結果から、解析を行う
-     */
-    function analize(postList: SaunaIkitaiPost[]): Promise<SaunaIkitaiSummary>;
-    /**
-     * サウナイキタイのサイトからサウナイキタイの情報を取得する
-     */
-    function scrape(): Promise<SaunaIkitaiPost[]>;
+    function sauna(): Promise<SaunaIkitaiSummary>;
     /**
      * 集計結果
      */
