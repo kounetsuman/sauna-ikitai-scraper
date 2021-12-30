@@ -4,7 +4,7 @@
 
 const puppeteer = require('puppeteer');
 import { SaunaIkitaiPost } from "../＠types";
-import { DEBUG } from "./const";
+import { DEBUG, WAIT_TIME } from "./const";
 import { log } from "./logger";
 import { sleepWhileCounting } from "./sleep";
 
@@ -42,7 +42,7 @@ export const parsePage = async (saunnerId: number, pageIndex: number) => new Pro
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url);
-    await sleepWhileCounting(15, DEBUG);
+    await sleepWhileCounting(WAIT_TIME, DEBUG);
     const rowList = await page.$$(SELECTOR_MAP.BASE);
     if (rowList.length === 0) {
         log('failed!');

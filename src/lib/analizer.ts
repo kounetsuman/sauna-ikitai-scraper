@@ -1,14 +1,13 @@
-import { DEBUG, JSON_PATH } from "./lib/const";
-import { SaunaIkitaiPost, SaunaIkitaiSummary } from "./＠types";
-
-const fs = require('fs');
+import { SaunaIkitaiPost, SaunaIkitaiSummary } from "../＠types";
 
 const RANKING_MAX = 10;
 
-const getSummary = async (path: string): Promise<SaunaIkitaiSummary> => {
-    const file = fs.readFileSync(path, 'utf8');
-    const postList: SaunaIkitaiPost[] = JSON.parse(file);
-    
+/**
+ * スクレイピング結果から、解析を行う
+ * @param postList 
+ * @returns 
+ */
+export const analize = async (postList: SaunaIkitaiPost[]): Promise<SaunaIkitaiSummary> => {
     const allPostRanking = {
         visitedPosts: 0,
         allLikes: 0,
@@ -70,50 +69,3 @@ const getSummary = async (path: string): Promise<SaunaIkitaiSummary> => {
         visitedPrefectureTimes: visitedPrefectureRanking.slice(0, RANKING_MAX),
     };
 };
-
-(async function () {
-    const summary = await getSummary(JSON_PATH);
-    output(summary);
-    process.exit(1);
-}());
-
-const output = (summary: SaunaIkitaiSummary) => {
-    if (DEBUG) {
-        console.log('■今までの総サ活回数');
-        console.log(summary.visitedPosts);
-        console.log('');
-        console.log('■今までの総いいね数');
-        console.log(summary.allLikes);
-        console.log('');
-        console.log('■今までの総コメント数');
-        console.log(summary.allComments);
-        console.log('');
-        console.log('■施設に行った回数ランキング');
-        summary.visitedFacilityTimes.forEach(it => {
-            console.log(it.name);
-            console.log(it.count);
-        });
-        console.log('');
-        console.log('■サ活した地域ランキング');
-        summary.visitedPrefectureTimes.forEach(it => {
-            console.log(it.name);
-            console.log(it.count);
-        });
-        console.log('');
-        console.log('■いいねが多いサ活ランキング');
-        summary.mostLikePost.forEach(it => {
-            console.log(it.name);
-            console.log(it.url);
-            console.log(it.count);
-        });
-        console.log('');
-        console.log('■コメントが多いサ活ランキング');
-        summary.mostCommentPost.forEach(it => {
-            console.log(it.name);
-            console.log(it.url);
-            console.log(it.count);
-        });
-    } else {
-        console.log(JSON.stringify(summary));
-    }
-}

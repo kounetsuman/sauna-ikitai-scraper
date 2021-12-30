@@ -2,6 +2,7 @@
   "name": "sauna-ikitai-scraper",
   "version": "1.0.0",
   "repository": "github-punkrou404:kounetsuman/sauna-ikitai-scraper.git",
+  "main": "src/index.js",
   "author": "kounetsuman <kounetsuman@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -12,5 +13,8 @@
   },
   "dependencies": {
     "ts-node": "^10.4.0"
+  },
+  "scripts": {
+    "start": "ts-node ./src/index.ts"
   }
 }
