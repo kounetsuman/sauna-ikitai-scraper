@@ -1,7 +1,7 @@
 import { analize } from "./lib/analizer";
 import { DEBUG } from "./lib/const";
 import { scrape } from "./lib/scraper";
-import { SaunaIkitaiPost, SaunaIkitaiSummary } from "./＠types";
+import { SaunaIkitaiSummary } from "./＠types";
 
 (async function () {
     const postList = await scrape();

@@ -1,12 +1,6 @@
 import { SaunaIkitaiPost, SaunaIkitaiSummary } from "../＠types";
 
 const RANKING_MAX = 10;
-
-/**
- * スクレイピング結果から、解析を行う
- * @param postList 
- * @returns 
- */
 export const analize = async (postList: SaunaIkitaiPost[]): Promise<SaunaIkitaiSummary> => {
     const allPostRanking = {
         visitedPosts: 0,

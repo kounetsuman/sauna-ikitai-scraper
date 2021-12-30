@@ -3,11 +3,7 @@ import { SAUNNER_ID } from "./const";
 import { log } from "./logger";
 import { parsePage } from "./puppeteer";
 
-/**
- * サウナイキタイのサイトからサウナイキタイの情報を取得する
- * @returns 
- */
-export const scrape = async () => {
+export const scrape = async (): Promise<SaunaIkitaiPost[]> => {
     const resultList: SaunaIkitaiPost[] = [];
     try {
         let counter = 1;
