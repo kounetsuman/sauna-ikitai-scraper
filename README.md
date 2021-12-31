@@ -10,6 +10,8 @@
   - コメントが多いサ活ランキング
   - and soon...
 
+![test a](https://user-images.githubusercontent.com/17906606/147815824-099be687-0789-465c-8f77-135b0f3b1865.gif)
+
 > 既存仕様だと、集計機能がとても弱く要望も多数あったため、作りました。  
 
 ## Caution
