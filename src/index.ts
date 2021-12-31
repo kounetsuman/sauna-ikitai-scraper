@@ -3,6 +3,8 @@ import { DEBUG } from "./lib/const";
 import { scrape } from "./lib/scraper";
 import { SaunaIkitaiSummary } from "./＠types";
 
+const fs = require('fs');
+
 export default async function sauna() {
     const postList = await scrape();
     const summary = await analize(postList);
@@ -10,10 +12,28 @@ export default async function sauna() {
 }
 
 (async function () {
-    const postList = await scrape();
-    const summary = await analize(postList);
-    output(summary);
-    process.exit(1);
+    console.log('all start');
+    const saveFilePath = process.argv[2];
+    console.log(saveFilePath);
+    if (!saveFilePath) {
+        console.log('ERROR!!!: 引数に出力先ファイルパスを指定してください。');
+    } else if (fs.existsSync(saveFilePath)) {
+        console.log('ERROR!!!: 指定したファイルパスはすでに存在します。');
+    } else if (saveFilePath.indexOf('/') !== 0) {
+        console.log('ERROR!!!: パスは絶対パスで指定してください。');
+    } else if (saveFilePath.indexOf('.') === -1) {
+        console.log('ERROR!!!: パスには拡張子をつけてください。');
+    } else if (saveFilePath.indexOf('.json') === -1) {
+        console.log('ERROR!!!: パスにはjsonをつけてください。');
+    } else {
+        fs.writeFileSync(saveFilePath, '');
+        console.log('scripe start');
+        const postList = await scrape();
+        const summary = await analize(postList);
+        output(summary);
+        fs.writeFileSync(saveFilePath, JSON.stringify(summary));
+    }
+    console.log('all end');
 }());
 
 const output = (summary: SaunaIkitaiSummary) => {

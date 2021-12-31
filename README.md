@@ -32,7 +32,8 @@ $ yarn install
 ## Usage
 
 ```
-$ yarn start # 集計後のjson文字列が標準出力されます。
+# 引数で設定したファイル(今回なら/tmp/result.json)に集計後のjson文字列が出力されます。
+$ yarn start /tmp/result.json
 ```
 
 ## Premise
